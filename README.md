@@ -17,7 +17,7 @@ The data are facility records in which every facility describes itself. A record
 | Facility × service claims scored | **487,051** (9,986 facilities, 2,531 services) |
 | Trust levels | **Verified 35,753 (7%)** · Likely 238,823 (49%) · Claimed only 212,475 (44%) |
 | Fair test on unseen rows (round 2) | **11 of 12 Verified were correct, 0 wrong** |
-| Data quality | 21% of facilities carry at least one warning; of 50 facilities checked online, 15 websites did not mention the claimed service |
+| Data quality | 21% of facilities carry at least one warning; in 50 hand-checked claims (rounds 2–3), the facility's website did not mention the claimed service 15 times |
 | Care gaps (NFHS-5 districts) | **140 high-need districts** have no Verified emergency C-section or NICU within 100 km (e.g. Bastar 211 km, Rayagada 175 km) |
 | Cheapest fix | In **84 districts** a facility within 25 km already *claims* emergency C-section but nobody has verified it; checking those claims would bring trusted care about **125 km closer** |
 
