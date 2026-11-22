@@ -1,0 +1,155 @@
+<div class="page">
+  <header class="masthead">
+    <div class="brand">
+      <img class="brand-mark" src="/assets/care-route.svg" width="34" height="34" alt="">
+      <span>Care Atlas</span>
+    </div>
+    <div class="language-switch" role="group" aria-label="Language" data-hi-label="भाषा">
+      <button type="button" data-language="en" lang="en" aria-pressed="true">English</button>
+      <button type="button" data-language="hi" lang="hi" aria-pressed="false">हिन्दी</button>
+    </div>
+    <a class="header-link" href="/hospitals" data-hi="स्वास्थ्य संस्थानों की सूची">Facility directory</a>
+  </header>
+  <div class="hero">
+    <h1 data-hi="सेवा और स्थान के अनुसार स्वास्थ्य संस्थान खोजें">Find care by service and location</h1>
+    <p><span class="coverage-intro" data-hi="पूरे भारत में स्वास्थ्य संस्थान खोजें।">Search facilities across India.</span> <span data-hi="आस-पास के परिणाम प्रमाण और दूरी के आधार पर दिखाए जाते हैं।">Nearby results are ranked by evidence and distance.</span></p>
+  </div>
+  <form class="search" role="search" aria-label="Find care" data-hi-label="स्वास्थ्य संस्थान खोजें">
+    <div class="field service-field">
+      <label for="service" data-hi="सेवा">Service</label>
+      <div class="service-entry">
+        <input id="service" name="service" placeholder="Type or choose a service" required autocomplete="off">
+      </div>
+    </div>
+    <div class="field location-field">
+      <label for="location" data-hi="कहाँ से चलेंगे?">Starting point</label>
+      <div class="location-row">
+        <input id="location" name="location" type="text" placeholder="City, landmark or PIN" data-hi-placeholder="शहर, पहचान की जगह या पिन कोड" maxlength="200" autocomplete="off" enterkeyhint="search" aria-describedby="location-privacy">
+        <button class="location-suggestions-toggle" type="button" aria-expanded="false" aria-controls="location-suggestions">Suggested places</button>
+      </div>
+      <div class="location-feedback">
+        <p id="location-privacy" class="location-privacy" data-hi="पते के सुझाव दिखाने के लिए आपका लिखा हुआ पता नक्शा प्रदाता को भेजा जा सकता है।">Address suggestions may share what you type with a map provider.</p>
+        <p class="location-status" role="status" aria-atomic="true"></p>
+        <div id="location-suggestions" class="location-suggestions" role="region" aria-labelledby="location-suggestions-title" hidden>
+          <p class="location-suggestions-title" id="location-suggestions-title">Suggested places</p>
+          <ul class="location-options"></ul>
+          <button class="location-browse" type="button">Browse all places</button>
+        </div>
+      </div>
+    </div>
+    <button class="search-button" type="submit">Search</button>
+    <div class="service-shortcuts" role="group" aria-label="Common services" data-hi-label="आम सेवाएँ" hidden></div>
+    <div id="service-counts" class="service-counts" aria-live="polite" aria-atomic="true" hidden>
+      <span class="evidence-label" data-hi="भारत भर में इस सेवा के प्रमाण">Evidence for this service across India</span>
+      <div class="evidence-bar" aria-hidden="true"><span data-tier="verified"></span><span data-tier="likely"></span><span data-tier="claimed"></span></div>
+      <div class="evidence-legend"><span data-tier="verified"></span> <span data-tier="likely"></span> <span data-tier="claimed"></span></div>
+    </div>
+  </form>
+  <main class="results-grid">
+    <section class="matches" aria-labelledby="results-heading">
+      <h2 id="results-heading" tabindex="-1">Matching facilities</h2>
+      <div class="radius-filter" hidden>
+        <label for="search-radius" data-hi="खोज का दायरा">Search radius</label>
+        <select id="search-radius">
+          <option value="25" data-hi="25 किमी">25 km</option>
+          <option value="50" data-hi="50 किमी">50 km</option>
+          <option value="100" data-hi="100 किमी">100 km</option>
+          <option value="200" selected data-hi="200 किमी">200 km</option>
+        </select>
+      </div>
+      <div class="radius-fallback" hidden>
+        <p class="no-trusted"></p>
+        <div class="nearest-options"></div>
+      </div>
+      <div id="trusted-results" class="result-list"></div>
+      <button type="button" class="show-more" aria-controls="trusted-results" hidden>Show more</button>
+      <p class="next-trusted-option" hidden></p>
+      <details class="unverified-results" hidden>
+        <summary>Unverified claims (0)</summary>
+        <div class="claimed-list result-list"></div>
+      </details>
+      <div class="empty-state" hidden>
+        <h3 data-hi="कोई स्वास्थ्य संस्थान नहीं मिला">No matching facilities</h3>
+        <p data-hi="कोई दूसरी सेवा या जगह चुनें।">Try another service or starting point.</p>
+        <button class="reset-search" type="button" data-hi="खोज रीसेट करें">Reset search</button>
+      </div>
+      <a class="directory-link" href="/hospitals" data-hi="सभी स्वास्थ्य संस्थान देखें">Browse all facilities</a>
+    </section>
+    <aside class="evidence-panel" id="desktop-evidence" aria-label="Selected facility evidence" data-hi-label="चुने हुए संस्थान की सेवा के प्रमाण"></aside>
+    <section class="route-panel" aria-labelledby="route-heading" hidden>
+      <button class="back-to-results" type="button" data-hi="← परिणामों पर लौटें">← Back to results</button>
+      <h2 id="route-heading" tabindex="-1" data-hi="संस्थान का नक्शा">Facility map</h2>
+      <label class="destination-label" for="map-hospital" data-hi="किस संस्थान तक जाना है?">Facility destination</label>
+      <select id="map-hospital"></select>
+      <button class="change-start" type="button" data-hi="शुरुआती जगह बदलें">Change starting point</button>
+      <p class="address-route-status" role="status" aria-atomic="true"></p>
+      <div class="route-canvas"></div>
+    </section>
+  </main>
+  <span role="status" class="sr-status" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)"></span>
+  <footer class="finder-footer">
+    <p class="trust-footnote" data-hi="प्रमाण का स्तर बताता है कि संस्थान के अपने रिकॉर्ड में इस सेवा के कितने प्रमाण हैं। सत्यापित का मतलब है कि कम से कम दो अलग-अलग प्रकार के प्रमाण मिले हैं। टीम ने पहले न देखे गए रिकॉर्ड जाँचे, तो 12 में से 11 सत्यापित परिणाम सही निकले।">Trust level measures how much evidence the facility’s own record gives for this service. Verified means two or more independent kinds of evidence. In the team’s hand-checks on unseen records, 11 of 12 Verified results were correct.</p>
+    <button class="privacy-link" type="button" aria-haspopup="dialog" data-hi="गोपनीयता">Privacy</button>
+    <div class="layout-tools"><button type="button" class="layout-toggle" aria-pressed="false">Preview mobile layout</button></div>
+  </footer>
+  <dialog class="privacy-dialog" aria-labelledby="privacy-title">
+    <h2 id="privacy-title" data-hi="स्थान संबंधी गोपनीयता">Location privacy</h2>
+    <p data-hi="Care Atlas अपनी सूची में शहर, ज़िले और पिन कोड खोजता है। पते या पहचान की जगह के सुझावों के लिए, जब आप लिखना रोकते हैं या खोज शुरू करते हैं, तो आपका लिखा हुआ पाठ Photon को भेजा जा सकता है।">Care Atlas looks up cities, districts and PIN codes in its directory. For live address or landmark suggestions, it may send your search text to Photon when you pause typing or submit a search.</p>
+    <p data-hi="गाड़ी का रास्ता माँगने पर FOSSGIS को आपकी शुरुआती जगह और चुने हुए संस्थान के निर्देशांक मिलते हैं और वह उन्हें दर्ज करता है। शुरुआती जगह के लिए आप पास की कोई जानी-पहचानी जगह भी चुन सकते हैं।">When you request driving directions, FOSSGIS receives and logs the coordinates of your starting point and the selected facility. You can use a nearby landmark as your starting point.</p>
+    <form method="dialog"><button type="submit" autofocus data-hi="बंद करें">Close</button></form>
+  </dialog>
+  <template id="result-template">
+    <article class="facility">
+      <button class="facility-choice" type="button">
+        <span class="facility-name"></span>
+        <span class="facility-meta"><span class="facility-place"></span><span class="distance"></span></span>
+        <span class="trust-badge"></span>
+        <span class="service-label"></span>
+        <span class="facility-warning" hidden data-hi="नक्शे पर स्थान गलत हो सकता है। पता जाँच लें।">Location may be inaccurate. Check the address.</span>
+        <span class="claim-notice" hidden data-hi="इस दावे के लिए पर्याप्त प्रमाण नहीं हैं। जाने से पहले फ़ोन करें।">Not enough evidence to trust this claim. Call before you go.</span>
+        <span class="evidence-link">View evidence</span>
+      </button>
+      <button class="facility-map" type="button" aria-controls="route-heading">
+        <svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="m2 5 6-2 8 3 6-2v15l-6 2-8-3-6 2zM8 3v15m8-12v15"/></svg>
+        <span data-hi="नक्शा देखें">View map</span>
+      </button>
+      <div class="mobile-evidence" hidden></div>
+    </article>
+  </template>
+  <template id="evidence-template">
+    <div class="evidence-content">
+      <h2 class="evidence-summary"></h2>
+      <p class="evidence-location"></p>
+      <div class="evidence-score">
+        <span aria-hidden="true" data-hi="प्रमाण अंक">Evidence score</span>
+        <span class="score-meter" role="meter" aria-label="Service evidence score" data-hi-label="सेवा के प्रमाण अंक" aria-valuemin="0" aria-valuemax="100">
+          <span class="score-fill" aria-hidden="true"></span>
+          <span class="score-value" aria-hidden="true"></span>
+        </span>
+      </div>
+      <p class="location-warning" hidden></p>
+      <h3 data-hi="संस्थान की जानकारी">Facility details</h3>
+      <dl class="facility-facts"></dl>
+      <div class="facility-caution" hidden>
+        <h3 data-hi="ध्यान दें">Caution</h3>
+        <p></p>
+      </div>
+      <section class="supporting-records">
+        <h3 data-hi="सहायक रिकॉर्ड">Supporting records</h3>
+        <div class="evidence-language-tools">
+          <p class="evidence-language-note" lang="hi" hidden></p>
+          <button class="original-evidence-toggle" type="button" lang="hi" hidden>मूल अंग्रेज़ी देखें</button>
+        </div>
+        <div class="evidence-body">
+          <p class="evidence-explanation"></p>
+          <div class="evidence-quotes"></div>
+        </div>
+      </section>
+      <details class="source-details">
+        <summary data-hi="स्रोत की जानकारी देखें">View source details</summary>
+        <p class="source-explanation" hidden></p>
+        <p class="source-record"></p>
+      </details>
+    </div>
+  </template>
+</div>

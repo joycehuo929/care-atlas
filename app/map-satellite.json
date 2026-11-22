@@ -1,0 +1,19 @@
+{
+  "bbox": [85.03418, 25.52261, 85.20996, 25.68114],
+  "projection": "EPSG:3857",
+  "year": 2025,
+  "attributionLabel": "EOxCloudless by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2025)",
+  "attributionUrl": "https://cloudless.eox.at/",
+  "attributionParts": [
+    {"label": "EOxCloudless", "url": "https://cloudless.eox.at/"},
+    {"label": " by "},
+    {"label": "EOX IT Services GmbH", "url": "https://eox.at/"},
+    {"label": " (Contains modified Copernicus Sentinel data 2025). Contrast enhanced."}
+  ],
+  "providerUrl": "https://eox.at/",
+  "licenseLabel": "CC BY-NC-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+  "sourceTermsUrl": "https://cloudless.eox.at/license-non-commercial",
+  "sourceUrl": "https://tiles.maps.eox.at/map?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=s2cloudless-2025_3857&STYLES=&SRS=EPSG:3857&BBOX=9465961.617624,2940073.282643,9485529.357715,2959642.064301&WIDTH=2048&HEIGHT=2048&FORMAT=image/jpeg",
+  "description": "True-colour 2025 Sentinel-2 cloudless mosaic, cropped to the Patna demo's street-map extent. Local luminance contrast and sharpening were adjusted at the original image dimensions."
+}

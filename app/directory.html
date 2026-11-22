@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Facility directory · Care Atlas</title>
+  <link rel="icon" type="image/svg+xml" sizes="any" href="/assets/care-route.svg">
+  <link rel="stylesheet" href="/assets/finder.css">
+  <link rel="stylesheet" href="/assets/directory.css">
+  <script type="module" src="/assets/directory.js"></script>
+</head>
+<body>
+  <div class="page directory">
+    <a class="skip-link" href="#hospital-name" data-hi="सीधे अस्पताल की खोज पर जाएँ">Skip to hospital search</a>
+    <header class="masthead">
+      <a class="brand" href="/" aria-label="Care Atlas home" data-hi-label="Care Atlas का मुख्य पृष्ठ">
+        <img class="brand-mark" src="/assets/care-route.svg" width="34" height="34" alt="">
+        <span>Care Atlas</span>
+      </a>
+      <div class="language-switch" role="group" aria-label="Language" data-hi-label="भाषा">
+      <button type="button" data-language="en" lang="en" aria-pressed="true">English</button>
+      <button type="button" data-language="hi" lang="hi" aria-pressed="false">हिन्दी</button>
+    </div>
+      <a class="header-link" href="/" data-hi="खोज पर लौटें">Back to finder</a>
+    </header>
+    <main class="directory-main">
+      <div class="directory-header">
+        <div class="directory-introduction">
+          <h1 data-hi="स्वास्थ्य संस्थानों की सूची">Facility directory</h1>
+          <p class="directory-intro" data-hi="सभी सेवाओं के लिए अस्पताल और अन्य स्वास्थ्य संस्थान नाम से खोजें।">Find hospitals and other facilities by name across all services.</p>
+        </div>
+        <form id="hospital-search" action="/hospitals" role="search" aria-label="Facility directory" data-hi-label="स्वास्थ्य संस्थानों की सूची">
+          <label for="hospital-name" data-hi="अस्पताल का नाम">Hospital name</label>
+          <div class="query-row">
+            <input id="hospital-name" name="q" type="search" placeholder="Enter a name" data-hi-placeholder="नाम दर्ज करें" maxlength="200" autocomplete="off" enterkeyhint="search">
+            <button class="directory-submit" type="submit" data-hi="खोजें">Search</button>
+          </div>
+        </form>
+      </div>
+      <section class="directory-results" aria-labelledby="results-title">
+        <h2 id="results-title" tabindex="-1" data-hi="खोज के परिणाम">Directory results</h2>
+        <p id="results-status" role="status" aria-atomic="true">Loading hospitals…</p>
+        <div id="recovery"></div>
+        <ul id="hospitals" aria-busy="true"></ul>
+        <nav id="pagination" aria-label="Directory pages" data-hi-label="सूची के पृष्ठ" hidden></nav>
+      </section>
+      <noscript data-hi="स्वास्थ्य संस्थान खोजने के लिए JavaScript चालू करें।">Enable JavaScript to search the facility directory.</noscript>
+    </main>
+  </div>
+</body>
+</html>
