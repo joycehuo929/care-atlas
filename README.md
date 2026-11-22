@@ -1,6 +1,7 @@
 # Care Atlas: find the right care in India, and know how much to trust it
 
 **CMU DSC × Databricks Datathon, Fall 2026 · Challenge: "Find the right care"**
+
 Team: Joyce, Tim, Daniel · Built entirely on **Databricks Free Edition**
 
 Given a service (dialysis, emergency C-section, cataract surgery, … any of 2,531 services) and a place in India, we recommend nearby facilities, show the evidence behind each recommendation, and say plainly how sure we are.
@@ -88,7 +89,7 @@ A higher trust level means a claim is more often confirmed by a human. That is t
 
 1. **Claims cannot be taken at face value.** Only 7% of claims are Verified; 44% have no real evidence.
 2. **Trusted life-saving care is far for many districts.** The median NFHS-5 district is 74 km from the nearest Verified emergency C-section, 66 km from a Verified NICU and 61 km from Verified dialysis; 223, 211 and 178 of 655 placed districts are more than 100 km away.
-3. **Need and distance overlap.** 140 districts have above-median mother & newborn need (low institutional births, high anaemia in pregnancy) and no Verified emergency C-section or NICU within 100 km. Most are in Madhya Pradesh (21), Assam (15), Chhattisgarh (11) and Odisha (10). 82 districts have high blood sugar and no Verified dialysis within 100 km.
+3. **Need and distance overlap.** 140 districts have above-median mother & newborn need (low institutional births, high anaemia in pregnancy) and no Verified emergency C-section or NICU within 100 km. The states with the most such districts are Madhya Pradesh (21), Assam (15), Chhattisgarh (11) and Odisha (10). 82 districts have high blood sugar and no Verified dialysis within 100 km.
 4. **Often the gap is verification, not buildings.** In 84 districts a facility within 25 km claims emergency C-section while the nearest Verified one is over 100 km away (median 129 km difference); 31 districts for NICU, 34 for dialysis.
 
 **Recommendations:** verify before you build (start with the 84 / 31 / 34 "unlock" districts); route emergencies by trust level; target new capacity where need is high and no claim exists; tie insurance empanelment (PM-JAY) to the same evidence; ask facilities to publish structured service data ("10 dialysis machines", "20-bed NICU").
